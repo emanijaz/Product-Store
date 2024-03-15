@@ -28,7 +28,6 @@ exports.login = catchAsyncError(async(req,res,next)=> {
       return next(new ErrorHandler(401, "User isn't found for given email"));
     }
     const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log("password match :", passwordMatch)
     if (!passwordMatch) {
       return next(new ErrorHandler(401, "Authentication failed, password didn't match"));
 

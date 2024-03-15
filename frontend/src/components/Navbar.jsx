@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const totalQuantity = useSelector(state=> state.cart.totalQuantity);
+  const handleGoBack = () => {
+    navigate(-1);
+  }
 
   const scrollToProducts = (event) => {
     event.preventDefault(); // Prevent the default anchor link behavior
@@ -22,7 +27,12 @@ export default function Navbar() {
   };
   return(
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow-sm py-3">
+      <button onClick={handleGoBack} style={{fontSize: "20px"}} type="button" className="btn btn-light">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+        </button>
       <div className="container">
+        
         <a className="navbar-brand fw-bold fs-4" href="/#">ShopCart</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -42,11 +52,8 @@ export default function Navbar() {
           </ul>
           <Link to="/cart">
             <button style={{fontSize: "20px"}} type="button" className="btn btn-light">
-              
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-              
             </button>
-            {/* Icon to be shown over the cart button */}
             <span className="position-absolute translate-middle badge rounded-pill bg-danger">
                 {totalQuantity}
             </span>

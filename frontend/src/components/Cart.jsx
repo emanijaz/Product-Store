@@ -84,7 +84,7 @@ export default function Cart() {
                             <td className="text-center align-middle">
                                 <div>
                                     <button onClick={()=>deleteItemFromCart(item.id)} class="btn btn-sm" style={{backgroundColor: "#c3c3c3"}} id="cross-btn" data-toggle="tooltip" data-placement="bottom" title="Remove product">
-                                        <i class="fa fa-times"></i>
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                 </div>
                             </td>
